@@ -1,4 +1,5 @@
-*.xcframework/
+
+1*.xcframework/
 .DS_Store
 xcuserdata/
 
