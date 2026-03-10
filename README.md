@@ -295,6 +295,25 @@ Gemini Live supports function calling. Both apps declare a single `execute` tool
 6. Result returns to Gemini via `toolResponse`
 7. Gemini speaks the confirmation
 
+### WebRTC Live Streaming
+
+Share your glasses POV in real-time to a browser viewer with bidirectional audio and video.
+
+1. Tap the **Live** button in the app
+2. The app connects to a signaling server and gets a 6-character room code
+3. Share the code -- the viewer opens the server URL in a browser and enters it
+4. WebRTC peer connection is established (SDP + ICE via the signaling server)
+5. Media flows peer-to-peer: glasses video to browser, browser camera back to iOS PiP
+
+**Key details:**
+- **Signaling server**: Node.js + WebSocket, located at `samples/CameraAccess/server/` -- serves the browser viewer and relays SDP/ICE
+- **NAT traversal**: Google STUN servers + ExpressTURN relay (fetched from `/api/turn`)
+- **Video**: 24 fps, 2.5 Mbps max bitrate
+- **Background handling**: 60-second grace period for iOS app backgrounding -- room stays alive for reconnection
+- **Constraint**: Cannot run simultaneously with Gemini Live (audio device conflict)
+
+For full details, see [`samples/CameraAccess/CameraAccess/WebRTC/README.md`](samples/CameraAccess/CameraAccess/WebRTC/README.md).
+
 ---
 
 ## Requirements
