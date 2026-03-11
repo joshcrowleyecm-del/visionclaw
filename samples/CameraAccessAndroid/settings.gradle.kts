@@ -24,6 +24,11 @@ pluginManagement {
     gradlePluginPortal()
   }
 }
+plugins {
+    id(id = buildString {
+        append("org.gradle.toolchains.foojay-resolver-convention")
+    }) version "0.10.0"
+}
 
 val localProperties =
     Properties().apply {

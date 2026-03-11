@@ -68,7 +68,17 @@ class InstrumentationTest {
   fun showsHomeScreenOnLaunch() {
     val homeTip = targetContext.getString(R.string.home_tip_video)
     composeTestRule.waitUntilExactlyOneExists(
-        hasText(homeTip),
+          fun tearDown() {
+            resetMockDeviceKitIfAvailable()
+          }import java.io.File
+          import java.io.FileOutputStream
+          import java.io.IOException
+          import org.junit.After
+          import org.junit.Assume.assumeTrue
+          import org.junit.Before
+          import org.junit.Rule
+          import org.junit.Test
+          import org.junit.runner.RunWithhasText(homeTip),
         timeoutMillis = 5000,
     )
   }
