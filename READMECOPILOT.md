@@ -1,1 +1,2 @@
 # VisionClaw
+[READMECOPILOT.md](READMECOPILOT.md)
